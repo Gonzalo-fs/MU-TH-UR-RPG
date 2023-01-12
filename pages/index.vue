@@ -1,5 +1,8 @@
 <template>
   <div class="crt screen">
+    <video autoplay muted id="bootup-video">
+      <source src="/videos/muthur-bootup.mp4" type="video/mp4">
+    </video>
     <div id="screen" class="terminal_emulator"></div>
   </div>
 </template>
@@ -7,6 +10,11 @@
 <script>
 export default {
   name: 'IndexPage',
+
+  meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    ],
 
   mounted() {
 
@@ -83,17 +91,44 @@ export default {
       },
 
       enterResponse: function(response) {
-        
+    
         return new Promise( (resolve, reject ) => {
-          var resp = document.createElement('div');
-          resp.className = 'terminal_emulator__response';
-          resp.innerHTML = response;
-          this.screen.insertBefore( resp, this.fieldwrap);
-          
-          resolve();
+
+          var randomSpeed = (max, min) => { 
+              return Math.random() * (max - min) + min; 
+            }
+              
+            var speed = randomSpeed(70, 90);
+            var i = 0;
+            var string = '';
+            var type = () => {
+              
+              string = string + response[i];
+              this.field.innerHTML = string.replace(/ /g, '&nbsp;');
+              i++;
+              
+              setTimeout( () => {
+                if( i < response.length){
+                  if( i % 5 === 0) speed = randomSpeed(80, 120);
+                  type();
+                }else {
+                  setTimeout( () => {
+                      var resp = document.createElement('div');
+                      resp.className = 'terminal_emulator__response';
+                      resp.innerHTML = response;
+                      this.screen.insertBefore( resp, this.fieldwrap);
+                      resolve();
+                  }, 400);
+                  
+                } 
+              }, speed);
+              
+            };
+            
+            type();
+
         })
-      
-        
+  
       },
       
       wait : function( time, busy ) {
@@ -119,52 +154,78 @@ export default {
 
     };
 
+    // ------------------- Terminal call ---------------------
 
-    /*
-    * 
-    * This is where the magic happens
-    *
-    */ 
+    setTimeout(() => {
 
-
-    var TE = TerminalEmulator.init(document.getElementById('screen'));
+      var TE = TerminalEmulator.init(document.getElementById('screen'));
 
 
-    TE.wait(1000, false)
-      .then( TE.enterInput.bind(TE, 'WELCOME GAME MOTHER') )
-      .then( TE.enterCommand.bind( TE ) )
-      .then( TE.enterResponse.bind(TE, 'MAINFRAME UNIT - [CHECK]') )
-      .then( TE.wait.bind(TE, 2000) )
-      .then( TE.enterResponse.bind(TE, 'TERABYTE HARD-DRIVE - [CHECK]') )
-      .then( TE.wait.bind(TE, 600) )
-      .then( TE.enterResponse.bind(TE, 'USER RESPONSIVE - [CHECK]') )
-      .then( TE.wait.bind(TE, 600) )
-      .then( TE.enterResponse.bind(TE, '- scripts v9.9.9 installed. ') )
-      .then( TE.wait.bind(TE, 300) )
-      .then( TE.enterResponse.bind(TE, '- 10 billion dependencies installed. ') )
-      .then( TE.wait.bind(TE, 700) )
-      .then( TE.enterResponse.bind(TE, 'Make website responsive? (y/y)') )
-      .then( TE.wait.bind(TE, 2000, false) )
-      .then( TE.enterInput.bind(TE, 'y') )
-      .then( TE.enterCommand.bind(TE) )
-      .then( TE.wait.bind(TE, 400) )
-      .then( TE.enterResponse.bind(TE, 'Make website accessible? (y/y)') ) 
-      .then( TE.wait.bind(TE, 1800, false) )
-      .then( TE.enterInput.bind(TE, 'y') )
-      .then( TE.enterCommand.bind(TE) )
-      .then( TE.wait.bind(TE, 400) )
-      .then( TE.enterResponse.bind(TE, 'finalizing...') )
-      .then( TE.wait.bind(TE, 2000) )
-      .then( TE.enterResponse.bind(TE, 'Website complete! Wasn\'t that easy?') )
-      .then( TE.reset.bind(TE) );
+      TE.wait(1000, false)
+        .then( TE.enterInput.bind(TE, 'WELCOME GAME MOTHER') )
+        .then( TE.enterCommand.bind( TE ) )
+        .then( TE.enterResponse.bind(TE, 'MAINFRAME UNIT - [CHECK]') )
+        .then( TE.wait.bind(TE, 2000) )
+        .then( TE.enterResponse.bind(TE, 'TERABYTE HARD-DRIVE - [CHECK]') )
+        .then( TE.wait.bind(TE, 600) )
+        .then( TE.enterResponse.bind(TE, 'USER RESPONSIVE - [CHECK]') )
+        .then( TE.wait.bind(TE, 600) )
+        .then( TE.enterResponse.bind(TE, '- scripts v9.9.9 installed. ') )
+        .then( TE.wait.bind(TE, 300) )
+        .then( TE.enterResponse.bind(TE, '- 10 billion dependencies installed. ') )
+        .then( TE.wait.bind(TE, 700) )
+        .then( TE.enterResponse.bind(TE, 'Make website responsive? (y/y)') )
+        .then( TE.wait.bind(TE, 2000, false) )
+        .then( TE.enterInput.bind(TE, 'y') )
+        .then( TE.enterCommand.bind(TE) )
+        .then( TE.wait.bind(TE, 400) )
+        .then( TE.enterResponse.bind(TE, 'Make website accessible? (y/y)') ) 
+        .then( TE.enterResponse.bind(TE, 'Make website accessible? (y/y)') ) 
+        .then( TE.enterResponse.bind(TE, 'Make website accessible? (y/y)') ) 
+        .then( TE.wait.bind(TE, 1800, false) )
+        .then( TE.enterInput.bind(TE, 'y') )
+        .then( TE.enterCommand.bind(TE) )
+        .then( TE.wait.bind(TE, 400) )
+        .then( TE.enterResponse.bind(TE, 'finalizing...') )
+        .then( TE.wait.bind(TE, 2000) )
+        .then( TE.enterResponse.bind(TE, 'Website complete! Wasn\'t that easy?') )
+        .then( TE.reset.bind(TE) );
+    }, 10000 );
 
-        
-      },
-
+  },
 }
 </script>
 
 <style>
+
+@font-face {
+  font-family: "MUTHUR";
+  src: ("/fonts/Berthold-City-Light-Regular.otf") format('opentype');
+}
+
+html, body{
+  width: 100%;
+	height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "MUTHUR";
+}
+
+#bootup-video {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%; 
+  min-height: 100%;
+}
+
+/* TERMINAL ANIMATION */
+
 .screen {
 	 position: absolute;
 	 overflow: hidden;
@@ -182,7 +243,7 @@ export default {
 	 line-height: 25px;
 	 box-sizing: border-box;
 	 text-align: left;
-	 font-family: monospace;
+	 font-family: "MUTHUR";
 	 font-weight: 700;
 	 color: #9f9;
 }
