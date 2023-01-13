@@ -200,7 +200,8 @@ export default {
 
 @font-face {
   font-family: "MUTHUR";
-  src: ("/fonts/Berthold-City-Light-Regular.otf") format('opentype');
+  src: local("MUTHUR"),
+  url("~static/fonts/Berthold-City-Light-Regular.otf") format('opentype');
 }
 
 html, body{
@@ -244,6 +245,7 @@ html, body{
 	 box-sizing: border-box;
 	 text-align: left;
 	 font-family: "MUTHUR";
+   letter-spacing: .2rem;
 	 font-weight: 700;
 	 color: #9f9;
 }
