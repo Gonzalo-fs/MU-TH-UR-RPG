@@ -6,8 +6,14 @@
 </template>
   
 <script>
+  import { focusInput } from '~/assets/js/utils.js';
   export default {
     name: 'DefaultLayout',
+
+    mounted(){
+      focusInput();
+    },
+
   }
 </script>
   

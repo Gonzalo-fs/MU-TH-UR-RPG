@@ -8,29 +8,29 @@
     </audio>  -->
 
       <p class="muthur-font-style">OVERMONITORING ADDRESS MATRIX</p>
+      <div id="terminal-container">
+
+      </div>
       <span> █ </span>
 
   </div>
 </template>
 
 <script>
-  import util from '~/assets/js/terminal.js';
+import { createNewLine } from '~/assets/js/utils.js';
 export default {
   name: 'IndexPage',
 
-  
-  
   mounted() {
+    createNewLine("WELCOME GAME MOTHER");
+      
+    setTimeout(() => {
+      createNewLine("WELCOME GAME MOTHER");
+    }, 2000);
 
-    // util.patata();
-
-    window.addEventListener("click", function() {
-      this.document.getElementById("user-input").focus();
-    })
-
-    window.addEventListener("keypress", function() {
-      this.document.getElementById("user-input").focus();
-    })
+    setTimeout(() => {
+      createNewLine("WELCOME GAME MOTHER");
+    }, 4000);
 
   },
 
