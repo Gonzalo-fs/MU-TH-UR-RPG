@@ -1,18 +1,4 @@
 
-// Focus input so user can type
-function focusInput() {
-    document.getElementById("user-input").focus();
-
-    window.addEventListener("click", function() {
-      document.getElementById("user-input").focus();
-    })
-    
-    window.addEventListener("keypress", function() {
-      document.getElementById("user-input").focus();
-    })
-}
-
-
 // Print new line with terminal typewritter effect
 var i = 0;
 var speed = 50;
@@ -33,7 +19,7 @@ function createNewLine(text) {
 
 function print() {
   if (i < txt.length) {
-    document.getElementById("new-line").innerHTML += txt.charAt(i);
+    document.getElementById("new-line").innerHTML += txt[i];
     i++;
     setTimeout(print, speed);
   } else {
@@ -43,8 +29,22 @@ function print() {
 }
 
 
+// Focus input so user can type
+function focusInput() {
+  document.getElementById("user-input").focus();
+
+  window.addEventListener("click", function() {
+    document.getElementById("user-input").focus();
+  })
+  
+  window.addEventListener("keypress", function() {
+    document.getElementById("user-input").focus();
+  })
+}
+
+
 export { 
-    focusInput,
-    createNewLine,
+  createNewLine,
+  focusInput,
 }
   

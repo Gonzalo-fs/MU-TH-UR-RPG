@@ -1,41 +1,29 @@
 <template>
-  <div>
-    <!-- <video muted id="bootup-video">
-      <source src="/videos/muthur-bootup.mp4" type="video/mp4">
-    </video>
-    <audio id="bootup-audio">
-      <source src="/audio/bootup-audio.mp3" type="audio/mpeg">
-    </audio>  -->
+    <div>
+        <img src="/img/index-panel/background.png" alt="background" usemap="#control-panel">
 
-      <p class="muthur-font-style">OVERMONITORING ADDRESS MATRIX</p>
-      <div id="terminal-container">
-
-      </div>
-      <span> █ </span>
-
-  </div>
+        <map name="control-panel">
+            <area alt="open button" coords="1072,682,1129,799" shape="rect" @click="access()">
+        </map>
+    </div>
 </template>
-
+  
 <script>
-import { createNewLine } from '~/assets/js/utils.js';
-export default {
-  name: 'IndexPage',
 
-  mounted() {
-    createNewLine("WELCOME GAME MOTHER");
-      
-    setTimeout(() => {
-      createNewLine("WELCOME GAME MOTHER");
-    }, 2000);
-
-    setTimeout(() => {
-      createNewLine("WELCOME GAME MOTHER");
-    }, 4000);
-
-  },
-
-}
+  export default {
+    name: 'IndexPage',
+  
+    methods: {
+        access: function() {
+            this.$nuxt.$options.router.push("/boot-up");
+        }
+    }
+  
+  }
 </script>
-
-<style>
+  
+<style scoped>
+    area{
+        cursor: pointer;
+    }
 </style>
