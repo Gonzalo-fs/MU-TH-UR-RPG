@@ -2,10 +2,7 @@
   <div class="crt">
 
       <p class="muthur-font-style">OVERMONITORING ADDRESS MATRIX</p>
-      <div id="terminal-container">
-
-      </div>
-      <span> █ </span>
+      <div id="terminal-container"></div>
 
   </div>
 </template>
@@ -16,16 +13,9 @@ export default {
   name: 'WelcomePage',
 
   mounted() {
-    createNewLine("MAINFRAME UNIT . . . . . . . . . . . . . . . . . . . . . . [CHECK]");
-      
-    setTimeout(() => {
-      createNewLine("TERABYTE HARD-DRIVE . . . . . . . . . . . . [CHECK]");
-    }, 2000);
-
-    setTimeout(() => {
-      createNewLine("USER RESPONSIVE . . . . . . . . . . . . . . . . . [CHECK]");
-    }, 4000);
-
+    createNewLine("MAINFRAME UNIT . . . . . . . . . . . . . . . . . [CHECK]");
+    createNewLine("TERABYTE HARD-DRIVE . . . . . . . . . . . . . [CHECK]");
+    createNewLine("USER RESPONSIVE . . . . . . . . . . . . . . . . . [CHECK]");
   },
 
 }

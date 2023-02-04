@@ -32,7 +32,12 @@ html, body{
   transform: scaleY(0.5);
 }
 
-
+#printer-char{
+  color: #FFFFFF !important;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF,
+               0 0 20px #00ff66, 0 0 30px #00ff66, 0 0 40px #00ff66, 0 0 55px #00ff66,
+               0 0 75px #49ff18, 0 0 100px #51e68d !important;
+}
 
 
 

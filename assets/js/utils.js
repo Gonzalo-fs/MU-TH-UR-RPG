@@ -1,35 +1,79 @@
 
-// Print new line with terminal typewritter effect
-var i = 0;
-var speed = 50;
-var txt = '';
+//------ PRINT NEW LINE WITH TERMINAL TYPEWRITTER EFFECT ------//
+const DEFAULT_SPEED = 40;
+var speed;
 
-function createNewLine(text) {
+const DEFAULT_STYLE = "muthur-font-style";
+var style;
+
+var charPosition = 0;
+var txt;
+
+function createNewLine(text, customStyle = DEFAULT_STYLE, customSpeed = DEFAULT_SPEED, delay = 0) {
+
+  let expectedTime = text.length * customSpeed + delay;
   
-  let container = document.getElementById("terminal-container");
-  
-  let newLine = document.createElement("p");
-  newLine.setAttribute("id", "new-line");
-  container.appendChild(newLine);
-  
-  txt = text;
-  print()
+  // Call to print or queue call if is already printing
+  if (!document.getElementById("new-line")) {
+
+    speed = customSpeed;
+    style = customStyle;
+    txt = text;
+
+    let container = document.getElementById("terminal-container");
+    
+    let newLine = document.createElement("p");
+    newLine.setAttribute("id", "new-line");
+    newLine.setAttribute("class", style);
+    container.appendChild(newLine);
+    
+    print();
+    
+  } else {
+    setTimeout(() => {
+      createNewLine(text)
+    }, expectedTime);
+  }
+
 
 }
 
 function print() {
-  if (i < txt.length) {
-    document.getElementById("new-line").innerHTML += txt[i];
-    i++;
-    setTimeout(print, speed);
+
+  let newLine = document.getElementById("new-line");
+
+  if (charPosition < txt.length) {
+
+    // Random character to make laser printer effect
+    const characters = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789-+.≡§=<>#@Æ¥¤■█';
+    const charactersLength = characters.length;
+    let randomChar = characters.charAt(Math.floor(Math.random() * charactersLength));
+
+    let printerChar = document.createElement("span");
+    printerChar.setAttribute("id", "printer-char")
+    printerChar.setAttribute("class", style);
+    printerChar.innerHTML += randomChar;
+
+    newLine.appendChild(printerChar);
+
+    setTimeout(() => {
+      // Print actual character and start over
+      newLine.innerHTML += txt[charPosition];
+      document.getElementById("printer-char").remove()
+      charPosition++;
+      print();
+    }, speed);
+
   } else {
-  	i = 0;
-    document.getElementById("new-line").removeAttribute("id");
+    // Printing finished
+  	charPosition = 0;
+    speed = DEFAULT_SPEED;
+    style = DEFAULT_STYLE;
+    newLine.removeAttribute("id");
   }
 }
 
-
-// Focus input so user can type
+//------ FOCUS INPUT SO USER CAN TYPE ------//
 function focusInput() {
   document.getElementById("user-input").focus();
 
