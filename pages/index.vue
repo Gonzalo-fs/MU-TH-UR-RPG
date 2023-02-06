@@ -15,6 +15,7 @@
   
     methods: {
         access: function() {
+            document.documentElement.requestFullscreen();
             this.$nuxt.$options.router.push("/boot-up");
         }
     }

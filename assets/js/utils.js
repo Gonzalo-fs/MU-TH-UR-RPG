@@ -9,10 +9,10 @@ var style;
 var charPosition = 0;
 var txt;
 
+var expectedTime;
+
 function createNewLine(text, customStyle = DEFAULT_STYLE, customSpeed = DEFAULT_SPEED, delay = 0) {
 
-  let expectedTime = text.length * customSpeed + delay;
-  
   // Call to print or queue call if is already printing
   if (!document.getElementById("new-line")) {
 
@@ -20,12 +20,18 @@ function createNewLine(text, customStyle = DEFAULT_STYLE, customSpeed = DEFAULT_
     style = customStyle;
     txt = text;
 
+    expectedTime = text.length * speed + delay;
+
     let container = document.getElementById("terminal-container");
-    
+    let lineContainer = document.createElement("div");
+    lineContainer.setAttribute("id", "line-container");
+    lineContainer.style.height = "0px"; 
+    container.appendChild(lineContainer);
+
     let newLine = document.createElement("p");
     newLine.setAttribute("id", "new-line");
     newLine.setAttribute("class", style);
-    container.appendChild(newLine);
+    lineContainer.appendChild(newLine);
     
     print();
     
@@ -65,7 +71,13 @@ function print() {
     }, speed);
 
   } else {
-    // Printing finished
+    
+    // Printing finished 
+    let oldHeight = newLine.offsetHeight;
+    let lineContainer = document.getElementById("line-container");
+    lineContainer.style.height = (oldHeight/2)+"px";
+    lineContainer.removeAttribute("id");
+
   	charPosition = 0;
     speed = DEFAULT_SPEED;
     style = DEFAULT_STYLE;

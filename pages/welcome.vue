@@ -1,8 +1,9 @@
 <template>
   <div class="crt">
 
-      <p class="muthur-font-style">OVERMONITORING ADDRESS MATRIX</p>
-      <div id="terminal-container"></div>
+    <div id="terminal-container">
+      <!-- <p class="muthur-font-style">OVERMONITORING ADDRESS MATRIX</p> -->
+    </div>
 
   </div>
 </template>
@@ -16,6 +17,9 @@ export default {
     createNewLine("MAINFRAME UNIT . . . . . . . . . . . . . . . . . [CHECK]");
     createNewLine("TERABYTE HARD-DRIVE . . . . . . . . . . . . . [CHECK]");
     createNewLine("USER RESPONSIVE . . . . . . . . . . . . . . . . . [CHECK]");
+    createNewLine("");
+    createNewLine("WELCOME, GAME MOTHER");
+
   },
 
 }
