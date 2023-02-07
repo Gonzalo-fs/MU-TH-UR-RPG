@@ -1,12 +1,12 @@
 <template>
     <div class="crt">
         
-      <video autoplay id="bootup-video">
+      <video autoplay muted id="bootup-video">
         <source src="/videos/muthur-bootup.mp4" type="video/mp4">
       </video>
-      <!-- <audio id="bootup-audio">
+      <audio autoplay id="bootup-audio">
         <source src="/audio/bootup-audio.mp3" type="audio/mpeg">
-      </audio>  -->
+      </audio> 
 
     </div>
   </template>
@@ -18,7 +18,7 @@
     mounted() {
       setTimeout(() => {
         this.$nuxt.$options.router.push("/welcome");
-      }, 10000);
+      }, 10500);
     },
   
   }

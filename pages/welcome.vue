@@ -1,8 +1,11 @@
 <template>
   <div class="crt">
 
+    <audio autoplay loop id="bootup-audio">
+        <source src="/audio/background-audio.mp3" type="audio/mpeg">
+    </audio> 
+
     <div id="terminal-container">
-      <!-- <p class="muthur-font-style">OVERMONITORING ADDRESS MATRIX</p> -->
     </div>
 
   </div>
