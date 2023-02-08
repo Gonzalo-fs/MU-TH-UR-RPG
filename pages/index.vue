@@ -9,10 +9,14 @@
 </template>
   
 <script>
-
+  import { clearTimeouts } from '~/assets/js/utils.js';
   export default {
     name: 'IndexPage',
-  
+    
+    mounted(){
+        clearTimeouts()
+    },
+
     methods: {
         access: function() {
             document.documentElement.requestFullscreen();

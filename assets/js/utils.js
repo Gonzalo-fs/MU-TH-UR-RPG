@@ -1,6 +1,6 @@
 
 //------ PRINT NEW LINE WITH TERMINAL TYPEWRITTER EFFECT ------//
-const DEFAULT_SPEED = 40;
+const DEFAULT_SPEED = 30; //40;
 var speed;
 
 const DEFAULT_STYLE = "muthur-font-style";
@@ -13,14 +13,14 @@ var expectedTime;
 
 function createNewLine(text, customStyle = DEFAULT_STYLE, customSpeed = DEFAULT_SPEED, delay = 0) {
 
-  // Call to print or queue call if is already printing
+  // Call to print() or queue call if is already printing
   if (!document.getElementById("new-line")) {
 
     speed = customSpeed;
     style = customStyle;
     txt = text;
 
-    expectedTime = text.length * speed + delay;
+    expectedTime = text.length * speed + delay + 500;
 
     let container = document.getElementById("terminal-container");
     let lineContainer = document.createElement("div");
@@ -98,9 +98,18 @@ function focusInput() {
   })
 }
 
+//------ DELETE ALL TIMEOUTS ------//
+function clearTimeouts() {
+  let id = window.setTimeout(function() {}, 0);
+  while (id--) {
+    window.clearTimeout(id);
+  }
+}
+
 
 export { 
   createNewLine,
   focusInput,
+  clearTimeouts,
 }
   

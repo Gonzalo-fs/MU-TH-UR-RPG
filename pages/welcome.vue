@@ -12,16 +12,21 @@
 </template>
 
 <script>
-import { createNewLine } from '~/assets/js/utils.js';
+import { createNewLine, clearTimeouts } from '~/assets/js/utils.js';
 export default {
   name: 'WelcomePage',
 
   mounted() {
+    clearTimeouts();
     createNewLine("MAINFRAME UNIT . . . . . . . . . . . . . . . . . [CHECK]");
     createNewLine("TERABYTE HARD-DRIVE . . . . . . . . . . . . . [CHECK]");
     createNewLine("USER RESPONSIVE . . . . . . . . . . . . . . . . . [CHECK]");
     createNewLine("");
     createNewLine("WELCOME, GAME MOTHER");
+
+    setTimeout(() => {
+        this.$nuxt.$options.router.push("/whats-the-story");
+      }, 10000);
 
   },
 

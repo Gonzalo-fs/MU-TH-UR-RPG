@@ -12,10 +12,12 @@
   </template>
   
   <script>
+  import { clearTimeouts } from '~/assets/js/utils.js';
   export default {
     name: 'BootUpVideo',
   
     mounted() {
+      clearTimeouts();
       setTimeout(() => {
         this.$nuxt.$options.router.push("/welcome");
       }, 10500);
