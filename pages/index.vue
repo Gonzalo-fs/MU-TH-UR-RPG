@@ -14,7 +14,18 @@
     name: 'IndexPage',
     
     mounted(){
+
+        // if (localStorage.getItem("lang")) {
+        //     this.$nuxt.$options.router.push("/whats-the-story");
+        // }
+
         clearTimeouts()
+
+        // localStorage.setItem("lang", "eng")
+        localStorage.setItem("lang", "esp")
+
+        localStorage.setItem("gm-rights", true)
+        // localStorage.removeItem("gm-rights")
     },
 
     methods: {
