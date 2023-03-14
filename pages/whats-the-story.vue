@@ -6,20 +6,23 @@
     </audio> 
 
     <div id="terminal-container">
-      <div>
-        <a href="">
-          <p class="muthur-font-style">HOPES LAST DAY</p>  
-        </a>
-        <a href="">
-          <p class="muthur-font-style">CHARIOT OF THE GODS</p>  
-        </a>
-        <a href="">
-          <p class="muthur-font-style">OUTBREAK</p>  
-        </a>
-        <a href="">
+
+      <div id="underline-menu">
+        <NuxtLink to="">
+          <p class="muthur-font-style">{{ texts[1] }}</p>
+        </NuxtLink>
+        <NuxtLink to="">
+          <p class="muthur-font-style">{{ texts[2] }}</p>
+        </NuxtLink>
+        <NuxtLink to="">
+          <p class="muthur-font-style">{{ texts[3] }}</p>
+        </NuxtLink>
+        <a href="/welcome">Welcome</a>
+        <!-- <NuxtLink to="">
           <p class="muthur-font-style">HOPES LAST DAY</p>
-        </a>
+        </NuxtLink> -->
       </div>
+      
     </div>
 
 
@@ -27,33 +30,53 @@
 </template>
 
 <script>
-import { createNewLine, clearTimeouts } from '~/assets/js/utils.js';
+import { createNewLine, clearTimeouts, createMenu } from '~/assets/js/utils.js';
 export default {
   name: 'StorySelect',
 
   computed: {
 
     isGM(){
-      return localStorage.getItem("gm-rights")
+      if (typeof window !== 'undefined') {
+        return localStorage.getItem("gm-rights")
+      }
     },
 
     texts(){
-      let lang = localStorage.getItem("lang");
+      if (typeof window !== 'undefined') {
+        var lang = localStorage.getItem("lang");
+      }
       let texts = []
       switch (lang) {
 
         default:
           // TEXTS IN ENGLISH
           texts[0] = this.isGM ? "WHAT'S THE STORY MOTHER?" : "WHAT'S THE STORY?";
+          texts[1] = "HOPE'S LAST DAY";
+          texts[2] = "CHARIOT OF THE GODS";
+          texts[3] = "OUTBREAK - HOMEBREW ONESHOT TEST";
+
         break;
 
         case "esp":
           // TEXTS IN SPANISH
           texts[0] = this.isGM ? "¿DE QUÉ SE TRATA, MADRE?" : "¿DE QUÉ SE TRATA?";
+          texts[1] = "HLD 652";
+          texts[2] = "COTG 794";
+          texts[3] = "OTB - PRUEBA DE ONESHOT";
+
         break;
 
       }
       return texts;
+    },
+
+    options(){
+      return {
+        "/page1" : this.texts[1],
+        "/page2" : this.texts[2],
+        "/page3" : this.texts[3],
+      }
     }
 
   },
@@ -61,7 +84,7 @@ export default {
   mounted() {
     clearTimeouts();
     createNewLine(this.texts[0]);
-
+    createMenu(this.options);
   },
 
 }

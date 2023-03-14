@@ -18,6 +18,9 @@
   
     mounted() {
       clearTimeouts();
+      // window.addEventListener("click", function() {
+      //   this.$nuxt.$options.router.push("/whats-the-story");
+      // });
       setTimeout(() => {
         this.$nuxt.$options.router.push("/welcome");
       }, 10500);

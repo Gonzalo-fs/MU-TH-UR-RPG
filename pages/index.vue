@@ -19,13 +19,13 @@
         //     this.$nuxt.$options.router.push("/whats-the-story");
         // }
 
-        clearTimeouts()
+        clearTimeouts();
 
         // localStorage.setItem("lang", "eng")
-        localStorage.setItem("lang", "esp")
+        localStorage.setItem("lang", "esp");
 
-        localStorage.setItem("gm-rights", true)
-        // localStorage.removeItem("gm-rights")
+        localStorage.setItem("gm-rights", true);
+        localStorage.removeItem("gm-rights");
     },
 
     methods: {

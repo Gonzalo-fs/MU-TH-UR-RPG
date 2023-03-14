@@ -37,10 +37,9 @@ function createNewLine(text, customStyle = DEFAULT_STYLE, customSpeed = DEFAULT_
     
   } else {
     setTimeout(() => {
-      createNewLine(text)
+      createNewLine(text, customStyle, customSpeed, delay)
     }, expectedTime);
   }
-
 
 }
 
@@ -85,6 +84,51 @@ function print() {
   }
 }
 
+//------ PRINT UNDERLINE MENU ------//                                    WIP
+function createMenu(options) {
+
+  // Print menu or queue if something is already printing
+  if (!document.getElementById("new-line")) {
+
+    expectedTime = 500;
+    
+    let container = document.getElementById("terminal-container");
+    
+    Object.keys(options).forEach(function(url) {
+      
+      let lineContainer = document.createElement("div");
+      lineContainer.setAttribute("id", "line-container");
+      lineContainer.style.height = "0px"; 
+      container.appendChild(lineContainer);
+  
+      let newLine = document.createElement("a");
+      newLine.setAttribute("id", "new-line");
+      newLine.setAttribute("href", "patata");
+      newLine.innerHTML = options[url];
+      lineContainer.appendChild(newLine);
+      console.log(url, options[url]);
+
+        
+        // Printing finished 
+        let oldHeight = newLine.offsetHeight;
+        
+        lineContainer.style.height = (oldHeight/2)+"px";
+        lineContainer.removeAttribute("id");
+    
+        newLine.removeAttribute("id");
+      
+    
+    });
+    
+    
+  } else {
+    setTimeout(() => {
+      createMenu(options)
+    }, expectedTime);
+  }
+
+}
+
 //------ FOCUS INPUT SO USER CAN TYPE ------//
 function focusInput() {
   document.getElementById("user-input").focus();
@@ -109,6 +153,7 @@ function clearTimeouts() {
 
 export { 
   createNewLine,
+  createMenu,
   focusInput,
   clearTimeouts,
 }

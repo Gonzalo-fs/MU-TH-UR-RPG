@@ -29,7 +29,7 @@ export default {
 
         default:
           // TEXTS IN ENGLISH
-          texts[0] = this.isGM ? "WELCOME GAME MOTHER" : "WELCOME CREW MEMBER";
+          texts[0] = this.isGM ? "WELCOME, GAME MOTHER" : "WELCOME, CREW MEMBER";
         break;
 
         case "esp":
