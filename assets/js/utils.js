@@ -1,4 +1,12 @@
 
+//------ DELETE ALL TIMEOUTS ------//
+function clearTimeouts() {
+  let id = window.setTimeout(function() {}, 0);
+  while (id--) {
+    window.clearTimeout(id);
+  }
+}
+
 //------ PRINT NEW LINE WITH TERMINAL TYPEWRITTER EFFECT ------//
 const DEFAULT_SPEED = 40; //40;
 var speed;
@@ -9,7 +17,7 @@ var style;
 var charPosition = 0;
 var txt;
 
-var expectedTime;
+var expectedTime = 0;
 
 function createNewLine(text = '', customStyle = DEFAULT_STYLE, customSpeed = DEFAULT_SPEED, delay = 0) {
 
@@ -119,7 +127,25 @@ function createMenu(options) {
       createMenu(options)
     }, expectedTime);
   }
+}
 
+//------ REDIRECT WITH TIMEOUT ------//
+function redirectAfterQueue(url, delay = 0) {
+
+  // Redirect or queue if something is printing
+  if (!document.getElementById("new-line")) {
+
+    setTimeout(() => {
+      clearTimeouts();
+      // window.location.href = url;
+      $nuxt.$options.router.push(url);
+    }, delay);
+    
+  } else {
+    setTimeout(() => {
+      redirectAfterQueue(url, delay)
+    }, expectedTime);
+  }
 }
 
 //------ FOCUS INPUT SO USER CAN TYPE ------//
@@ -135,19 +161,13 @@ function focusInput() {
   })
 }
 
-//------ DELETE ALL TIMEOUTS ------//
-function clearTimeouts() {
-  let id = window.setTimeout(function() {}, 0);
-  while (id--) {
-    window.clearTimeout(id);
-  }
-}
 
 
 export { 
+  clearTimeouts,
   createNewLine,
   createMenu,
+  redirectAfterQueue,
   focusInput,
-  clearTimeouts,
 }
   

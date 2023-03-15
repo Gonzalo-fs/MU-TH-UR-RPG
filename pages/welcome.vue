@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { createNewLine, clearTimeouts } from '~/assets/js/utils.js';
+import { createNewLine, clearTimeouts, redirectAfterQueue } from '~/assets/js/utils.js';
 export default {
   name: 'WelcomePage',
 
@@ -51,9 +51,7 @@ export default {
     createNewLine("");
     createNewLine(this.texts[0]);
 
-    setTimeout(() => {
-        this.$nuxt.$options.router.push("/whats-the-story");
-      }, 8500);
+    redirectAfterQueue("/whats-the-story");
 
   },
 

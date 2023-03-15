@@ -43,6 +43,7 @@ html, body{
 .muthur-menu-link {
   display: block;
   text-decoration: none;
+  width: fit-content;
 }
 
 .muthur-menu-link:hover {
