@@ -6,23 +6,6 @@
     </audio> 
 
     <div id="terminal-container">
-
-      <div id="underline-menu">
-        <NuxtLink to="">
-          <p class="muthur-font-style">{{ texts[1] }}</p>
-        </NuxtLink>
-        <NuxtLink to="">
-          <p class="muthur-font-style">{{ texts[2] }}</p>
-        </NuxtLink>
-        <NuxtLink to="">
-          <p class="muthur-font-style">{{ texts[3] }}</p>
-        </NuxtLink>
-        <a href="/welcome">Welcome</a>
-        <!-- <NuxtLink to="">
-          <p class="muthur-font-style">HOPES LAST DAY</p>
-        </NuxtLink> -->
-      </div>
-      
     </div>
 
 
@@ -84,6 +67,7 @@ export default {
   mounted() {
     clearTimeouts();
     createNewLine(this.texts[0]);
+    createNewLine();
     createMenu(this.options);
   },
 

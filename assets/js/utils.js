@@ -1,6 +1,6 @@
 
 //------ PRINT NEW LINE WITH TERMINAL TYPEWRITTER EFFECT ------//
-const DEFAULT_SPEED = 30; //40;
+const DEFAULT_SPEED = 40; //40;
 var speed;
 
 const DEFAULT_STYLE = "muthur-font-style";
@@ -11,7 +11,7 @@ var txt;
 
 var expectedTime;
 
-function createNewLine(text, customStyle = DEFAULT_STYLE, customSpeed = DEFAULT_SPEED, delay = 0) {
+function createNewLine(text = '', customStyle = DEFAULT_STYLE, customSpeed = DEFAULT_SPEED, delay = 0) {
 
   // Call to print() or queue call if is already printing
   if (!document.getElementById("new-line")) {
@@ -84,7 +84,7 @@ function print() {
   }
 }
 
-//------ PRINT UNDERLINE MENU ------//                                    WIP
+//------ PRINT UNDERLINE MENU ------//
 function createMenu(options) {
 
   // Print menu or queue if something is already printing
@@ -98,28 +98,21 @@ function createMenu(options) {
       
       let lineContainer = document.createElement("div");
       lineContainer.setAttribute("id", "line-container");
-      lineContainer.style.height = "0px"; 
       container.appendChild(lineContainer);
   
       let newLine = document.createElement("a");
       newLine.setAttribute("id", "new-line");
-      newLine.setAttribute("href", "patata");
+      newLine.setAttribute("href", url);
       newLine.innerHTML = options[url];
+      newLine.setAttribute("class", DEFAULT_STYLE + " muthur-menu-link");
       lineContainer.appendChild(newLine);
-      console.log(url, options[url]);
-
-        
-        // Printing finished 
-        let oldHeight = newLine.offsetHeight;
-        
-        lineContainer.style.height = (oldHeight/2)+"px";
-        lineContainer.removeAttribute("id");
-    
-        newLine.removeAttribute("id");
-      
+  
+      // let oldHeight = newLine.offsetHeight;    
+      // lineContainer.style.height = (oldHeight/2)+"px";
+      lineContainer.removeAttribute("id");
+      newLine.removeAttribute("id");
     
     });
-    
     
   } else {
     setTimeout(() => {
