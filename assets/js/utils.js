@@ -129,6 +129,30 @@ function createMenu(options) {
   }
 }
 
+//------ CARRIAGE RETURN WITH LASER JUMP ------//
+function addLaserJump() {
+
+  // Redirect or queue if something is printing
+  if (!document.getElementById("new-line")) {
+
+    expectedTime = 700;
+
+    let container = document.getElementById("terminal-container");
+    let newLine = document.createElement("div");
+    newLine.setAttribute("id", "new-line");
+    container.appendChild(newLine);
+    newLine.innerHTML = '<div class="laser-jump"><span>▓■-_</span></div>'
+    setTimeout(() => {
+      newLine.remove();
+    }, expectedTime);
+    
+  } else {
+    setTimeout(() => {
+      addLaserJump()
+    }, expectedTime);
+  }
+}
+
 //------ REDIRECT WITH TIMEOUT ------//
 function redirectAfterQueue(url, delay = 0) {
 
@@ -167,6 +191,7 @@ export {
   clearTimeouts,
   createNewLine,
   createMenu,
+  addLaserJump,
   redirectAfterQueue,
   focusInput,
 }

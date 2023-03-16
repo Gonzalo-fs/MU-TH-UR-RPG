@@ -6,6 +6,8 @@
     </audio> 
 
     <div id="terminal-container">
+      <!-- <h1 class="laser-jump"><span>_-■▓</span></h1> -->
+      <!-- <div class="laser-jump"><span>▓■-_</span></div> -->
     </div>
 
 
@@ -13,7 +15,7 @@
 </template>
 
 <script>
-import { createNewLine, clearTimeouts, createMenu } from '~/assets/js/utils.js';
+import { createNewLine, clearTimeouts, createMenu, addLaserJump } from '~/assets/js/utils.js';
 export default {
   name: 'StorySelect',
 
@@ -66,8 +68,10 @@ export default {
 
   mounted() {
     clearTimeouts();
+    addLaserJump();
     createNewLine(this.texts[0]);
     createNewLine();
+    addLaserJump();
     createMenu(this.options);
   },
 
