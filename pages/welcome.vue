@@ -51,7 +51,8 @@ export default {
     createNewLine("");
     createNewLine(this.texts[0]);
 
-    redirectAfterQueue("/whats-the-story");
+    // redirectAfterQueue("/whats-the-story");
+    redirectAfterQueue("/hld/menu");
 
   },
 
