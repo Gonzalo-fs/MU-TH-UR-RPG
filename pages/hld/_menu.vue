@@ -5,10 +5,7 @@
         <source src="/audio/background-audio.mp3" type="audio/mpeg">
     </audio> 
 
-    <div id="content-container">
-        <div id="terminal-container"></div>
-        
-        <img id="profile-image" src="/img/hld/crew/Hirsch.jpg" alt="Hirsch profile image">
+    <div id="terminal-container">
     </div>
 
 
@@ -18,7 +15,7 @@
 <script>
 import { createNewLine, clearTimeouts, createMenu } from '~/assets/js/utils.js';
 export default {
-    name: 'CrewHirsch',
+    name: 'MenuHLD',
 
     computed: {
 
@@ -46,12 +43,11 @@ export default {
 
                 case "esp":
                 // TEXTS IN SPANISH
-                texts[0] = "NOMBRE COMPLETO: MORGAN HIRSCH";
-                texts[1] = "PUESTO: LIMPIADOR";
-                texts[2] = "EDAD: 39";
-                texts[3] = "PERSONALIDAD: RELIGIOSO";
-                texts[4] = "SALIR";
-                
+                texts[0] = "TERMINAL DE HADLEY'S HOPE";
+                texts[1] = "INFORMES";
+                texts[2] = "TRIPULACIÓN";
+                texts[3] = "MAPA";
+
                 break;
 
             }
@@ -60,7 +56,10 @@ export default {
 
         options(){
             return {
-                "." : this.texts[4]
+                "/hld/reports/menu" : this.texts[1],
+                "/hld/crew-members/menu" : this.texts[2],
+                // ".." : this.texts[3],
+                "/img/hld/maps/hld-Level-01.png" : this.texts[3],
             }
         }
 
@@ -69,36 +68,12 @@ export default {
     mounted() {
         clearTimeouts();
         createNewLine(this.texts[0]);
-        createNewLine(this.texts[1]);
-        createNewLine(this.texts[2]);
-        createNewLine(this.texts[3]);
         createNewLine();
-        createNewLine();
-        createNewLine();
-        createMenu(this.options)
-
+        createMenu(this.options);
     },
 
 }
 </script>
 
-<style scoped>
-#content-container{
-    width: 99vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#terminal-container{
-    width: 50%;
-    margin: unset;
-}
-
-#profile-image{
-    height: 600px;
-    margin-bottom: 50px;
-}
-
-
+<style>
 </style>

@@ -33,6 +33,12 @@ html, body{
   transform: scaleY(0.5);
 }
 
+.many-text-style {
+  font-size: 35px;
+  letter-spacing: .15rem;
+  color: #51e68dee;
+}
+
 #printer-char{
   color: #FFFFFF !important;
   text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF,

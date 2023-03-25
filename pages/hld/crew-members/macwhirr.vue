@@ -8,7 +8,7 @@
     <div id="content-container">
         <div id="terminal-container"></div>
         
-        <img id="profile-image" src="/img/hld/crew/Hirsch.jpg" alt="Hirsch profile image">
+        <img id="profile-image" src="/img/hld/crew/Macwhirr.jpg" alt="Hirsch profile image">
     </div>
 
 
@@ -18,7 +18,7 @@
 <script>
 import { createNewLine, clearTimeouts, createMenu } from '~/assets/js/utils.js';
 export default {
-    name: 'CrewHirsch',
+    name: 'CrewMacwhirr',
 
     computed: {
 
@@ -46,10 +46,10 @@ export default {
 
                 case "esp":
                 // TEXTS IN SPANISH
-                texts[0] = "NOMBRE COMPLETO: MORGAN HIRSCH";
-                texts[1] = "PUESTO: LIMPIADOR";
-                texts[2] = "EDAD: 39";
-                texts[3] = "PERSONALIDAD: RELIGIOSO";
+                texts[0] = "NOMBRE COMPLETO: JANICE MACWHIRR";
+                texts[1] = "PUESTO: ENLACE SINDICAL CON LA AC";
+                texts[2] = "EDAD: 42";
+                texts[3] = "PERSONALIDAD: ENTROMETIDA";
                 texts[4] = "SALIR";
                 
                 break;

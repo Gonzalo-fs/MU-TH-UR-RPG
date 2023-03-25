@@ -8,7 +8,7 @@ function clearTimeouts() {
 }
 
 //------ PRINT NEW LINE WITH TERMINAL TYPEWRITTER EFFECT ------//
-const DEFAULT_SPEED = 40; //40;
+const DEFAULT_SPEED = 30; //40;
 var speed;
 
 const DEFAULT_STYLE = "muthur-font-style";
@@ -28,12 +28,20 @@ function createNewLine(text = '', customStyle = DEFAULT_STYLE, customSpeed = DEF
     style = customStyle;
     txt = text;
 
-    expectedTime = text.length * speed + delay + 500;
+    // TEMPORARY FIX, WORK ON THIS - Doesnt work as it should
+    // expectedTime = text.length * speed + delay + 500;
+
+    expectedTime = (text.length * speed + delay + 500)/3;
+
 
     let container = document.getElementById("terminal-container");
     let lineContainer = document.createElement("div");
     lineContainer.setAttribute("id", "line-container");
-    lineContainer.style.height = "0px"; 
+
+    if (style.includes("muthur-font-style")) {
+      lineContainer.style.height = "0px"; 
+    }
+
     container.appendChild(lineContainer);
 
     let newLine = document.createElement("p");
@@ -80,9 +88,13 @@ function print() {
   } else {
     
     // Printing finished 
-    let oldHeight = newLine.offsetHeight;
     let lineContainer = document.getElementById("line-container");
-    lineContainer.style.height = (oldHeight/2)+"px";
+
+    if (style.includes("muthur-font-style")) {
+      let oldHeight = newLine.offsetHeight;
+      lineContainer.style.height = (oldHeight/2)+"px";
+    }
+    
     lineContainer.removeAttribute("id");
 
   	charPosition = 0;

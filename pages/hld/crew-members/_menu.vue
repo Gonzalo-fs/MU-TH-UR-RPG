@@ -44,9 +44,12 @@ export default {
                 case "esp":
                 // TEXTS IN SPANISH
                 texts[0] = "TRIPULACIÓN:";
-                texts[1] = "HIRSCH";
-                texts[2] = "HOLROYD";
-                texts[3] = "MACWHIRR";
+                texts[1] = "MACWHIRR";
+                texts[2] = "HIRSCH";
+                texts[3] = "SINGLETON";
+                texts[4] = "HOLROYD";
+                texts[5] = "SIGG";
+                texts[6] = "SALIR";
 
                 break;
 
@@ -55,11 +58,18 @@ export default {
         },
 
         options(){
-            return {
-                "/hld/crew-members/hirsch" : this.texts[1],
-                "/page2" : this.texts[2],
-                "/shutdown" : this.texts[3],
-            }
+            return [
+                    {
+                        "/hld/crew-members/macwhirr" : this.texts[1],
+                        "/hld/crew-members/hirsch" : this.texts[2],
+                        "/hld/crew-members/singleton" : this.texts[3],
+                        "/hld/crew-members/holroyd" : this.texts[4],
+                        "/hld/crew-members/sigg" : this.texts[5],
+                    },
+                    {
+                        ".." : this.texts[6],
+                    }
+                ]
         }
 
     },
@@ -68,7 +78,11 @@ export default {
         clearTimeouts();
         createNewLine(this.texts[0]);
         createNewLine();
-        createMenu(this.options);
+        createMenu(this.options[0]);
+        createNewLine();
+        createMenu(this.options[1]);
+
+
     },
 
 }
