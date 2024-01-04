@@ -1,5 +1,9 @@
 # MU-TH-UR-RPG
 
+## Live APP
+
+Deployed on: [https://mu-th-ur-rpg.vercel.app/](https://mu-th-ur-rpg.vercel.app/)
+
 ## Build Setup
 
 ```bash
